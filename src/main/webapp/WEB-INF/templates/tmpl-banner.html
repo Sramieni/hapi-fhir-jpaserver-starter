@@ -11,31 +11,39 @@
     </div>
 
     <script>
-        const customlogoImageUrl = "content/custom/logo.jpg"; // Custom logo
-        const defaultLogoImageUrl = "img/sample-logo.jpg"; // Default logo
+        // Path to your custom logo image
+        const customLogoImagePath = "/home/test/Desktop/logo UPHI 11.png";
+
+        // Path to the default logo image
+        const defaultLogoImageUrl = "img/sample-logo.jpg";
+
         const logoImageElement = document.getElementById("logo");
 
-        // Check if the logo image is available
+        // Create a new Image object
         const logoImg = new Image();
-        logoImg.src = customlogoImageUrl;
 
+        // Set the source of the Image object to your custom logo image
+        logoImg.src = customLogoImagePath;
+
+        // When the custom logo image loads successfully
         logoImg.onload = function() {
-            // Logo image is available
-            logoImageElement.src = customlogoImageUrl;
+            // Replace the src attribute of the logo image with the custom logo image path
+            logoImageElement.src = customLogoImagePath;
         };
 
+        // When the custom logo image fails to load
         logoImg.onerror = function() {
-            // Logo image is not available, use the default logo image
+            // Replace the src attribute of the logo image with the default logo image path
             logoImageElement.src = defaultLogoImageUrl;
         };
-
-
     </script>
+
     <!-- Error banner in case anything went wrong -->
     <div class="alert  alert-danger alert-dismissable" th:if="${errorMsg} != null">
         <strong>Warning!</strong>
         <p th:text="${errorMsg}"></p>
     </div>
-
 </div>
 </html>
+
+        
